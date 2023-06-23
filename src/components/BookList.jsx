@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import fetchBooks from '../redux/book-store/thunk/fetchBooks';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import Book from './Book';
 
-const BookList = () => {
+const BookList = ({ setIsUpdate }) => {
   const dispatch = useDispatch();
   const bookList = useSelector((state) => state.bookList);
   const [showFeatured, setShowFeatured] = useState(false);
@@ -43,10 +44,16 @@ const BookList = () => {
           ? 'No Book Found'
           : bookList
               .filter(filterByFeatured)
-              .map((book) => <Book book={book} key={book.id} />)}
+              .map((book) => (
+                <Book book={book} key={book.id} setIsUpdate={setIsUpdate} />
+              ))}
       </div>
     </div>
   );
+};
+
+BookList.propTypes = {
+  setIsUpdate: PropTypes.func.isRequired,
 };
 
 export default BookList;

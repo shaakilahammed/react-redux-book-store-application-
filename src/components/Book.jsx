@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import deleteBook from '../redux/book-store/thunk/deleteBook';
-const Book = ({ book }) => {
+import { setBookDataEdit } from '../redux/book-store/actions';
+const Book = ({ book, setIsUpdate }) => {
   const dispatch = useDispatch();
   const { id, name, author, thumbnail, price, rating, featured } = book;
   // console.log(id);
 
   const editHandler = () => {
-    console.log('first');
+    setIsUpdate(true);
+    dispatch(setBookDataEdit(book));
   };
 
   const deleteHandler = () => {
@@ -104,6 +106,7 @@ Book.propTypes = {
     rating: PropTypes.number.isRequired,
     featured: PropTypes.bool.isRequired,
   }).isRequired,
+  setIsUpdate: PropTypes.func.isRequired,
 };
 
 export default Book;

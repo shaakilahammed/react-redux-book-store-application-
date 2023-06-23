@@ -1,6 +1,7 @@
-import { updated } from '../actions';
+import { clearBookData, updated } from '../actions';
 
-const updateBook = (book) => async (dispatch) => {
+const updateBook = () => async (dispatch, getState) => {
+  const book = getState().bookData;
   try {
     const response = await fetch(`http://localhost:9000/books/${book.id}`, {
       method: 'PATCH',
@@ -12,6 +13,7 @@ const updateBook = (book) => async (dispatch) => {
     const newBook = await response.json();
 
     dispatch(updated(newBook));
+    dispatch(clearBookData());
   } catch (error) {
     console.log(error);
   }

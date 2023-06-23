@@ -1,4 +1,12 @@
-import { ADDED, DELETED, UPDATED, LOADED } from './actionTypes';
+import {
+  ADDED,
+  DELETED,
+  UPDATED,
+  LOADED,
+  ADD_BOOK_DATA,
+  CLEAR_BOOK_DATA,
+  SET_BOOK_DATA_EDIT,
+} from './actionTypes';
 
 export const loaded = (bookStoreList) => {
   return {
@@ -25,5 +33,25 @@ export const deleted = (bookStoreId) => {
   return {
     type: DELETED,
     payload: bookStoreId,
+  };
+};
+
+export const setBookDataEdit = (bookStore) => {
+  return {
+    type: SET_BOOK_DATA_EDIT,
+    payload: bookStore,
+  };
+};
+
+export const addBookData = (fieldName, data) => {
+  return {
+    type: ADD_BOOK_DATA,
+    payload: { fieldName, data },
+  };
+};
+
+export const clearBookData = () => {
+  return {
+    type: CLEAR_BOOK_DATA,
   };
 };

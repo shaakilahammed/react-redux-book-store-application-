@@ -28,13 +28,22 @@
       "id": 4
     },
     {
-      "name": "Test",
-      "author": "Test Ah",
+      "name": "The Chronicles of Narnia",
+      "author": "Barnes and Noble New York",
       "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
-      "price": 250,
-      "rating": 1,
-      "featured": true,
+      "price": 2500,
+      "rating": 5,
+      "featured": false,
       "id": 7
+    },
+    {
+      "name": "Shakil Ahammed",
+      "author": "Barnes and Noble New York",
+      "thumbnail": "https://images.unsplash.com/photo-1629992101753-56d196c8aabb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=690&q=80",
+      "price": 40,
+      "rating": 4,
+      "featured": true,
+      "id": 8
     }
   ]
 }

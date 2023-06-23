@@ -1,6 +1,7 @@
-import { added } from '../actions';
+import { added, clearBookData } from '../actions';
 
-const addBook = (book) => async (dispatch) => {
+const addBook = () => async (dispatch, getState) => {
+  const book = getState().bookData;
   try {
     const response = await fetch('http://localhost:9000/books', {
       method: 'POST',
@@ -12,6 +13,7 @@ const addBook = (book) => async (dispatch) => {
     const newBook = await response.json();
 
     dispatch(added(newBook));
+    dispatch(clearBookData());
   } catch (error) {
     console.log(error);
   }

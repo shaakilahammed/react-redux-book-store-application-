@@ -1,39 +1,58 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import addBook from '../redux/book-store/thunk/addBook';
+import { addBookData } from '../redux/book-store/actions';
+import updateBook from '../redux/book-store/thunk/updateBook';
 
-const AddBookForm = () => {
+const AddBookForm = ({ isUpdate, setIsUpdate }) => {
+  console.log(isUpdate);
   const dispatch = useDispatch();
-  const [input, setInput] = useState({
-    name: '',
-    author: '',
-    thumbnail: '',
-    price: '',
-    rating: '',
-    featured: false,
-  });
+  const input = useSelector((state) => state.bookData);
+  // console.log(bookkk);
+  // const [input, setInput] = useState({
+  //   name: '',
+  //   author: '',
+  //   thumbnail: '',
+  //   price: '',
+  //   rating: '',
+  //   featured: false,
+  // });
+  // dispatch(addBookData('name', input.name));
 
   const inputHandler = (e, fieldName) => {
     if (fieldName === 'rating' || fieldName === 'price') {
-      setInput({ ...input, [fieldName]: Number(e.target.value) });
+      dispatch(addBookData(fieldName, Number(e.target.value)));
+
+      // setInput({ ...input, [fieldName]: Number(e.target.value) });
     } else if (fieldName === 'featured') {
-      setInput({ ...input, [fieldName]: e.target.checked });
+      dispatch(addBookData(fieldName, e.target.checked));
+
+      // setInput({ ...input, [fieldName]: e.target.checked });
     } else {
-      setInput({ ...input, [fieldName]: e.target.value });
+      dispatch(addBookData(fieldName, e.target.value));
+
+      // setInput({ ...input, [fieldName]: e.target.value });
     }
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(addBook(input));
-    setInput({
-      name: '',
-      author: '',
-      thumbnail: '',
-      price: '',
-      rating: '',
-      featured: false,
-    });
+    if (isUpdate) {
+      dispatch(updateBook());
+      setIsUpdate(false);
+    } else {
+      dispatch(addBook());
+    }
+
+    // setInput({
+    //   name: '',
+    //   author: '',
+    //   thumbnail: '',
+    //   price: '',
+    //   rating: '',
+    //   featured: false,
+    // });
   };
   return (
     <div>
@@ -125,12 +144,17 @@ const AddBookForm = () => {
           </div>
 
           <button type="submit" className="submit" id="submit">
-            Add Book
+            {isUpdate ? 'Update Book' : 'Add Book'}
           </button>
         </form>
       </div>
     </div>
   );
+};
+
+AddBookForm.propTypes = {
+  isUpdate: PropTypes.bool.isRequired,
+  setIsUpdate: PropTypes.func.isRequired,
 };
 
 export default AddBookForm;
