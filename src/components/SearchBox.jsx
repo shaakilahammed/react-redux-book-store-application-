@@ -1,6 +1,10 @@
-const SearchBox = () => {
+import PropTypes from 'prop-types';
+const SearchBox = ({ setSearchInput }) => {
+  const submitHandler = (e) => {
+    e.preventDefault();
+  };
   return (
-    <form className="flex items-center">
+    <form className="flex items-center" onSubmit={submitHandler}>
       <div className="group relative rounded-md bg-white">
         <svg
           width="20"
@@ -19,10 +23,16 @@ const SearchBox = () => {
           placeholder="Filter books..."
           className="search"
           id="lws-searchBook"
+          name="search"
+          onChange={(e) => setSearchInput(e.target.value)}
         />
       </div>
     </form>
   );
+};
+
+SearchBox.propTypes = {
+  setSearchInput: PropTypes.func.isRequired,
 };
 
 export default SearchBox;

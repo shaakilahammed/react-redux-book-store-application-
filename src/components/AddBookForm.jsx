@@ -6,7 +6,6 @@ import { addBookData } from '../redux/book-store/actions';
 import updateBook from '../redux/book-store/thunk/updateBook';
 
 const AddBookForm = ({ isUpdate, setIsUpdate }) => {
-  console.log(isUpdate);
   const dispatch = useDispatch();
   const input = useSelector((state) => state.bookData);
   // console.log(bookkk);

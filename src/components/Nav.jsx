@@ -1,6 +1,7 @@
 import SearchBox from './SearchBox';
+import PropTypes from 'prop-types';
 
-const Nav = () => {
+const Nav = ({ setSearchInput }) => {
   return (
     <nav className="py-4 2xl:px-6">
       <div className="container flex items-center justify-between">
@@ -12,10 +13,14 @@ const Nav = () => {
           <li className="cursor-pointer">My Collection</li>
         </ul>
 
-        <SearchBox />
+        <SearchBox setSearchInput={setSearchInput} />
       </div>
     </nav>
   );
+};
+
+Nav.propTypes = {
+  setSearchInput: PropTypes.func.isRequired,
 };
 
 export default Nav;

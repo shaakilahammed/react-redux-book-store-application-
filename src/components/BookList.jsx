@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import Book from './Book';
 
-const BookList = ({ setIsUpdate }) => {
+const BookList = ({ setIsUpdate, searchInput }) => {
   const dispatch = useDispatch();
   const bookList = useSelector((state) => state.bookList);
   const [showFeatured, setShowFeatured] = useState(false);
@@ -12,6 +12,11 @@ const BookList = ({ setIsUpdate }) => {
 
   const filterByFeatured = (book) => {
     return showFeatured ? book.featured : true;
+  };
+  const filterSearch = (book) => {
+    return searchInput
+      ? book.name.toLowerCase().includes(searchInput?.toLowerCase())
+      : true;
   };
   useEffect(() => {
     dispatch(fetchBooks);
@@ -43,6 +48,7 @@ const BookList = ({ setIsUpdate }) => {
         {bookList.length <= 0
           ? 'No Book Found'
           : bookList
+              .filter(filterSearch)
               .filter(filterByFeatured)
               .map((book) => (
                 <Book book={book} key={book.id} setIsUpdate={setIsUpdate} />
@@ -54,6 +60,7 @@ const BookList = ({ setIsUpdate }) => {
 
 BookList.propTypes = {
   setIsUpdate: PropTypes.func.isRequired,
+  searchInput: PropTypes.string,
 };
 
 export default BookList;
