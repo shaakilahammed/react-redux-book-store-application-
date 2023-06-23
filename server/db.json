@@ -26,6 +26,42 @@
       "rating": 4,
       "featured": true,
       "id": 4
+    },
+    {
+      "name": "The Chronicles of Narnia",
+      "author": "Barnes and Noble New York",
+      "thumbnail": "https://images.unsplash.com/photo-1629992101753-56d196c8aabb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=690&q=80",
+      "price": 550,
+      "rating": 4,
+      "featured": false,
+      "id": 5
+    },
+    {
+      "name": "The Chronicles of Narnia",
+      "author": "Barnes and Noble New York",
+      "thumbnail": "https://images.unsplash.com/photo-1629992101753-56d196c8aabb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=690&q=80",
+      "price": 4545,
+      "rating": 2,
+      "featured": true,
+      "id": 6
+    },
+    {
+      "name": "Test",
+      "author": "Test Ah",
+      "thumbnail": "https://m.media-amazon.com/images/I/51Ga5GuElyL._SX331_BO1,204,203,200_.jpg",
+      "price": 250,
+      "rating": 1,
+      "featured": true,
+      "id": 7
+    },
+    {
+      "name": "Test",
+      "author": "Test Ah",
+      "thumbnail": "https://images.unsplash.com/photo-1629992101753-56d196c8aabb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=690&q=80",
+      "price": 0,
+      "rating": 1,
+      "featured": false,
+      "id": 8
     }
   ]
 }
