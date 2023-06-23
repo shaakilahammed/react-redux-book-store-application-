@@ -1,7 +1,19 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import deleteBook from '../redux/book-store/thunk/deleteBook';
 const Book = ({ book }) => {
-  const { name, author, thumbnail, price, rating, featured } = book;
-  //   console.log(name);
+  const dispatch = useDispatch();
+  const { id, name, author, thumbnail, price, rating, featured } = book;
+  // console.log(id);
+
+  const editHandler = () => {
+    console.log('first');
+  };
+
+  const deleteHandler = () => {
+    dispatch(deleteBook(id));
+  };
+
   const ratingStarsCalculate = () => {
     let ratingStars = [];
     for (let i = 0; i < rating; i++) {
@@ -38,7 +50,7 @@ const Book = ({ book }) => {
             <span></span>
           )}
           <div className="text-gray-500 space-x-2">
-            <button className="lws-edit">
+            <button className="lws-edit" onClick={editHandler}>
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
@@ -53,7 +65,7 @@ const Book = ({ book }) => {
                 />
               </svg>
             </button>
-            <button className="lws-delete">
+            <button className="lws-delete" onClick={deleteHandler}>
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
@@ -84,6 +96,7 @@ const Book = ({ book }) => {
 
 Book.propTypes = {
   book: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
     thumbnail: PropTypes.string.isRequired,

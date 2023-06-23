@@ -1,6 +1,6 @@
 import { updated } from '../actions';
 
-const addBook = (book) => async (dispatch) => {
+const updateBook = (book) => async (dispatch) => {
   try {
     const response = await fetch(`http://localhost:9000/books/${book.id}`, {
       method: 'PATCH',
@@ -16,4 +16,4 @@ const addBook = (book) => async (dispatch) => {
     console.log(error);
   }
 };
-export default addBook;
+export default updateBook;

@@ -1,6 +1,6 @@
 import { deleted } from '../actions';
 
-const addBook = (bookId) => async (dispatch) => {
+const deleteBook = (bookId) => async (dispatch) => {
   try {
     await fetch(`http://localhost:9000/books/${bookId}`, {
       method: 'DELETE',
@@ -11,4 +11,4 @@ const addBook = (bookId) => async (dispatch) => {
     console.log(error);
   }
 };
-export default addBook;
+export default deleteBook;
