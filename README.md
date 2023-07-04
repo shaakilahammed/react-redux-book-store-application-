@@ -1,4 +1,4 @@
-# React Redux Book Store Application
+# Book Store Application
 
 This is a book store application built using React and Redux. It allows users to browse and search for books, add them to a shopping cart, and proceed to checkout.
 
